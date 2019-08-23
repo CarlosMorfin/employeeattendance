@@ -1,0 +1,11 @@
+<% content_for :main_navbar do %>
+  <!-- Put your menus here -->
+<% end %>
+
+<% content_for :application do %>
+  <div id="public-wrapper" class="container">
+    <%= yield %>
+  </div>
+<% end %>
+
+<%= render template: 'layouts/application' %>
