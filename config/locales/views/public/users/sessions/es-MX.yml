@@ -1,0 +1,7 @@
+es-MX:
+  public:
+    users:
+      sessions:
+        new:
+          title: Iniciar sesión
+          login: Entrar
