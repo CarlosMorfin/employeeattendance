@@ -13,4 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
 @import "bootstrap";
+
+.navbar-main {
+  background-color: rgb(20, 100, 190);
+  min-height: 60px;
+}
+
+.navbar-main .navbar-nav .navbar-text {
+  color: #fff;
+}
