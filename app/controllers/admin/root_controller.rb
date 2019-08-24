@@ -3,7 +3,10 @@ module Admin
   class RootController < AdminController
 
     def show
-      redirect_to admin_employees_path
+      case
+      when can?(:index, :admin_employees)
+        redirect_to admin_employees_path
+      end
     end
 
   end
