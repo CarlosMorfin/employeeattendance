@@ -1,0 +1,14 @@
+es-MX:
+  activerecord:
+    models:
+      employee:
+        one: Empleado
+        other: Empleados
+    attributes:
+      employee:
+        code: Codigo
+        name: Nombre
+        last_names: Apellidos
+        gender: Género
+        email: Correo electrónico
+        phone: Teléfono
