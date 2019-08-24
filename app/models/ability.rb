@@ -30,5 +30,19 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+
+    user.roles.each { |role| send(role.code) }
+
+    # user.roles.each { |role| send(role.code) } if user.active?
+
+    alias_action :read, :update, to: :modify
+
+    # Default permitssión for a users without roles
+    # can :show, :admin_dashboard
   end
+
+  def administrator
+    can :show, :admin_root
+  end
+
 end
