@@ -1,0 +1,11 @@
+<% alerts.each do |k, v| %>
+  <% if ALERT_TYPES.key?(k) %>
+    <div class="alert alert-<%= ALERT_TYPES[k] %> alert-dismissable fade show">
+      <%= v %>
+
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+<% end %>

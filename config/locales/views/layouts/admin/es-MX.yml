@@ -1,0 +1,5 @@
+es-MX:
+  layouts:
+    admin:
+      employees: Empleados
+      sign_out: Salir
