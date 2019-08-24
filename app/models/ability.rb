@@ -42,7 +42,8 @@ class Ability
   end
 
   def administrator
-    can :show, :admin_root
+    can :show,   :admin_root
+    can :manage, :admin_employees
   end
 
 end
