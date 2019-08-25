@@ -1,0 +1,40 @@
+<% content_for :title, t('.full_name', full_name: @employee.full_name) %>
+
+<div class="col-sm-8 col-md-10">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="details-group m-2">
+        <%= hp_field_label(:employee, :code) %>:
+        <%= hp_field_content(@employee.code) %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="details-group m-2">
+        <%= hp_field_label(:employee, :phone) %>:
+        <%= hp_field_content(@employee.phone) %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="details-group m-2">
+        <%= hp_field_label(:employee, :full_name) %>:
+        <%= hp_field_content(@employee.full_name) %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="details-group m-2">
+        <%= hp_field_label(:employee, :gender) %>:
+        <%= hp_human_code_name_for(:employee, @employee.gender) %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="details-group m-2">
+        <%= hp_field_label(:employee, :email) %>:
+        <%= hp_field_content(@employee.email) %>
+      </div>
+    </div>
+  </div>
+</div>

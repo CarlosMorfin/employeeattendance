@@ -35,4 +35,44 @@ describe Admin::EmployeesController do
 
   end
 
+  describe 'GET #show', method: :get, action: :show do
+
+    context 'when the employee exists' do
+
+      before(:each) do
+        @employee = FactoryBot.create(:employee)
+      end
+
+      let(:default_params) do
+        { id: @employee.id }
+      end
+
+      it 'assigns the requested employee to @employee' do
+        do_request
+
+        expect(assigns(:employee)).to eq @employee
+      end
+
+      it 'renders the :show template' do
+        do_request
+
+        expect(response).to render_template :show
+      end
+
+    end
+
+    context 'when the employee does not exist' do
+
+      let(:default_params) do
+        { id: 9999 }
+      end
+
+      it 'raises an ActiveRecord::RecordNotFound  error' do
+        expect { do_request }.to raise_error ActiveRecord::RecordNotFound
+      end
+
+    end
+
+  end
+
 end
