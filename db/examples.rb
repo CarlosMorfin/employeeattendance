@@ -6,3 +6,4 @@
 #   load File.expand_path('../examples/users.rb', __FILE__)
 
 load File.expand_path('../examples/users.rb', __FILE__)
+load File.expand_path('../examples/employees.rb', __FILE__)

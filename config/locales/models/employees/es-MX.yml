@@ -9,6 +9,7 @@ es-MX:
         code: Codigo
         name: Nombre
         last_names: Apellidos
+        full_name: Nombre completo
         gender: Género
         email: Correo electrónico
         phone: Teléfono

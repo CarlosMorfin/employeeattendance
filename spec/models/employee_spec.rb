@@ -86,4 +86,11 @@ describe Employee do
     expect(employee).not_to be_valid
   end
 
+  it 'the full_name method of employee returns the name plus the last names' do
+    employee.name       = 'John'
+    employee.last_names = 'Doe F'
+
+    expect(employee.full_name).to eq('John Doe F')
+  end
+
 end

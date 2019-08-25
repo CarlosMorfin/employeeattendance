@@ -53,6 +53,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
   # Fixtures replacement with a straightforward definition syntax
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+ # This gem brings back assigns to your controller tests as well as
+  # assert_template to both controller and integration tests
+  gem 'rails-controller-testing', '~> 1.0'
 end
 
 group :development do

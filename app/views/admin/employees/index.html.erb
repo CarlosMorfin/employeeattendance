@@ -1,0 +1,44 @@
+<% content_for :title, t('.title') %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>
+        #
+      </th>
+      <th>
+        <%= hp_human_name_for(:employee, :code) %>
+      </th>
+      <th>
+        <%= hp_human_name_for(:employee, :full_name) %>
+      </th>
+      <th>
+        <%= hp_human_name_for(:employee, :email) %>
+      </th>
+      <th>
+        <%= hp_human_name_for(:employee, :phone) %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @employees.each_with_index do |employee, index| %>
+      <tr>
+        <td>
+          <%= index + 1 %>
+        </td>
+        <td>
+          <%= employee.code %>
+        </td>
+        <td>
+          <%= employee.full_name %>
+        </td>
+        <td>
+          <%= employee.email %>
+        </td>
+        <td>
+          <%= employee.phone %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

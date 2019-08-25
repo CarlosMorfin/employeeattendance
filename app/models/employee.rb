@@ -27,4 +27,8 @@ class Employee < ApplicationRecord
     presence: true,
     length:   { maximum: 32 }
 
+  def full_name
+    "#{self.name} #{self.last_names}"
+  end
+
 end
