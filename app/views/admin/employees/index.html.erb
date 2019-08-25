@@ -1,5 +1,11 @@
 <% content_for :title, t('.title') %>
 
+<% if can?(:new, :admin_employees) %>
+  <div class="mb-1 text-right">
+    <%= link_to(t('.new'), { action: :new }, class: 'btn btn-light') %>
+  </div>
+<% end %>
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -30,7 +36,10 @@
           <%= employee.code %>
         </td>
         <td>
-          <%= employee.full_name %>
+          <%= link_to_if(
+              can?(:show, :admin_employees),
+              employee.full_name,
+              action: :show, id: employee) %>
         </td>
         <td>
           <%= employee.email %>

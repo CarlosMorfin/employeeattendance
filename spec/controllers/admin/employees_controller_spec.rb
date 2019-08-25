@@ -35,6 +35,153 @@ describe Admin::EmployeesController do
 
   end
 
+  describe 'GET #new', method: :get, action: :new do
+
+    before(:each) do
+      FactoryBot.create(:employee, code: 'ABC0012')
+    end
+
+    it 'assigns a new employee instance to @employee' do
+      do_request
+
+      expect(assigns(:employee)).to be_a_instance_of(Employee)
+    end
+
+    it 'assigns a new recommended code with the consecutive number of the ' \
+       'last employee code generated to the new instance of code' do
+      do_request
+
+      expect(assigns(:employee).code).to eq 'ABC0013'
+    end
+
+    it 'renders the :new template' do
+      do_request
+
+      expect(response).to render_template :new
+    end
+
+  end
+
+  describe 'POST #create', method: :post, action: :create do
+
+    let(:default_params) do
+      {
+        employee: {
+          name:       'Juan',
+          last_names: 'Gonzalez Diaz',
+          gender:     'M',
+          email:      'juangonzalez@gmail.com',
+          phone:      '3315892889',
+          code:       'AAA12'
+        }
+      }
+    end
+
+    context 'with valid attributes' do
+
+      it 'creates a new employee' do
+        expect { do_request }.to change(Employee, :count).by(1)
+      end
+
+      it 'assigns the code to the created employee' do
+        do_request
+
+        employee = Employee.last
+
+        expect(employee.code).to eq default_params[:employee][:code]
+      end
+
+      it 'assigns the name to the created employee' do
+        do_request
+
+        employee = Employee.last
+
+        expect(employee.name).to eq default_params[:employee][:name]
+      end
+
+      it 'assigns the last_names to the created employee' do
+        do_request
+
+        employee = Employee.last
+
+        expect(employee.last_names).to eq default_params[:employee][:last_names]
+      end
+
+      it 'assigns the gender to the created employee' do
+        do_request
+
+        employee = Employee.last
+
+        expect(employee.gender).to eq default_params[:employee][:gender]
+      end
+
+      it 'assigns the phone to the created employee' do
+        do_request
+
+        employee = Employee.last
+
+        expect(employee.phone).to eq default_params[:employee][:phone]
+      end
+
+      it 'assigns the email to the created employee' do
+        do_request
+
+        employee = Employee.last
+
+        expect(employee.email).to eq default_params[:employee][:email]
+      end
+
+      it 'assigns a flash notice message' do
+        do_request
+
+        expect(flash[:notice]).not_to be_nil
+      end
+
+      it 'redirects to show page' do
+        do_request
+
+        employee = Employee.last
+
+        expect(response).to redirect_to action: :show, id: employee.id
+      end
+
+    end
+
+    context 'without valid attributes' do
+
+      let(:default_params) do
+        {
+          employee: {
+            name:       nil,
+            last_names: 'Gonzalez Diaz',
+            gender:     'M',
+            email:      'juangonzalez@gmail.com',
+            phone:      '3315892889',
+            code:       'AAA12'
+          }
+        }
+      end
+
+      it 'does not create a new employee' do
+        expect { do_request }.not_to change(Employee, :count)
+      end
+
+      it 'assigns a flash alert message' do
+        do_request
+
+        expect(flash[:alert]).not_to be_nil
+      end
+
+      it 'render the :new template' do
+        do_request
+
+        expect(response).to render_template :new
+      end
+
+    end
+
+  end
+
   describe 'GET #show', method: :get, action: :show do
 
     context 'when the employee exists' do

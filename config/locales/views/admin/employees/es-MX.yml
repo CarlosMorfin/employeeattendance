@@ -3,3 +3,12 @@ es-MX:
     employees:
       index:
         title: Empleados
+        new: Nuevo
+      new:
+        title: Nuevo empleado
+      create:
+        success: El empleado ha sido creado exitosamente
+        error: No se puede crear el empleado
+      show:
+        full_name: ! '%{full_name}'
+        edit: Editar

@@ -6,10 +6,13 @@ es-MX:
         other: Empleados
     attributes:
       employee:
-        code: Codigo
+        code: Código
         name: Nombre
         last_names: Apellidos
         full_name: Nombre completo
         gender: Género
         email: Correo electrónico
         phone: Teléfono
+        code_value:
+          M: Masculino
+          F: Femenino
