@@ -2,6 +2,9 @@ module Admin
 
   class EmployeesController < AdminController
 
+    before_action :find_employee,
+      only: [:edit, :show, :update]
+
     def index
       @employees = Employee.order(:name)
     end
@@ -22,8 +25,18 @@ module Admin
       @employee = Employee.new(code: recommended_code)
     end
 
-    def show
-      @employee = Employee.find(params[:id])
+    def edit ; end
+
+    def show ; end
+
+    def update
+      if @employee.update(employee_params)
+        flash[:notice] = t('.success')
+        redirect_to admin_employees_path
+      else
+        flash[:alert] = t('.error')
+        render :edit
+      end
     end
 
     private
@@ -38,6 +51,10 @@ module Admin
           :email,
           :phone
         )
+    end
+
+    def find_employee
+      @employee = Employee.find(params[:id])
     end
 
     def recommended_code

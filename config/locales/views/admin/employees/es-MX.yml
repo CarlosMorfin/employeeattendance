@@ -4,11 +4,16 @@ es-MX:
       index:
         title: Empleados
         new: Nuevo
-      new:
-        title: Nuevo empleado
       create:
         success: El empleado ha sido creado exitosamente
         error: No se puede crear el empleado
+      new:
+        title: Nuevo empleado
+      edit:
+        title: ! '%{full_name}'
       show:
-        full_name: ! '%{full_name}'
+        title: ! '%{full_name}'
         edit: Editar
+      update:
+        success: Los datos del empleado han sido actualizados
+        error: No se pudo actualizar al empleado
