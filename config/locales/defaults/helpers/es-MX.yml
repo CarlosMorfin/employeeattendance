@@ -1,0 +1,6 @@
+es-MX:
+  helpers:
+    delete_button:
+      title: Eliminar
+      confirmation: ¿Está seguro?
+

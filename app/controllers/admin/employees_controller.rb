@@ -3,7 +3,7 @@ module Admin
   class EmployeesController < AdminController
 
     before_action :find_employee,
-      only: [:edit, :show, :update]
+      only: [:edit, :show, :update, :destroy]
 
     def index
       @employees = Employee.order(:name)
@@ -35,6 +35,16 @@ module Admin
         redirect_to admin_employees_path
       else
         flash[:alert] = t('.error')
+        render :edit
+      end
+    end
+
+    def destroy
+      if @employee.destroy
+        flash[:notice] = t('.success')
+        redirect_to action: :index
+      else
+        flash.now[:alert] = t('.error')
         render :edit
       end
     end

@@ -414,4 +414,42 @@ describe Admin::EmployeesController do
 
   end
 
+  describe 'DELETE #destroy', method: :delete, action: :destroy do
+
+    before(:each) do
+      @employee = FactoryBot.create(:employee)
+    end
+
+    context 'when the eemployee exists' do
+
+      let(:default_params) do
+        { id: @employee.id }
+      end
+
+      it 'deletes the employee' do
+        expect { do_request }.to change(Employee, :count).by(-1)
+      end
+
+      it 'redirects to :index page' do
+        do_request
+
+        expect(response).to redirect_to action: :index
+      end
+
+    end
+
+    context 'when the employee does not exists' do
+
+      let(:default_params) do
+        { id: 9999 }
+      end
+
+      it 'raises an ActiveRecord::RecordNotFound  error' do
+        expect { do_request }.to raise_error ActiveRecord::RecordNotFound
+      end
+
+    end
+
+  end
+
 end
