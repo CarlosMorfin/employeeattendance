@@ -3,3 +3,8 @@ es-MX:
     attendances:
       index:
         title: Asistencias
+        employees: Empleados
+        check_in: Llegada
+      create:
+        success: La llegada del empleado se ha registrado exitosamente
+        error: No se pudo registrar la llegada del empleado
