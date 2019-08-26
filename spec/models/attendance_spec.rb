@@ -20,4 +20,27 @@ describe Attendance do
     expect(attendance).not_to be_valid
   end
 
+  it 'delegate the employee_code method to the employee model' do
+    expect(attendance.employee_code).to eq attendance.employee.code
+  end
+
+  it 'delegate the employee_full_name method to the employee model' do
+    expect(attendance.employee_full_name).to eq attendance.employee.full_name
+  end
+
+  describe '#current_attendances' do
+
+    before(:each) do
+      @attendance_1 = FactoryBot.create(:attendance)
+      @attendance_2 = FactoryBot.create(:attendance, check_out: Time.zone.now)
+      @attendance_3 = FactoryBot.create(:attendance)
+    end
+
+    it 'return attendances without check_out sorted by check_in in ' \
+       'descending order' do
+      expect(Attendance.current_attendances).to eq [@attendance_3, @attendance_1]
+    end
+
+  end
+
 end
