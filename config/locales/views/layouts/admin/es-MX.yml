@@ -2,4 +2,5 @@ es-MX:
   layouts:
     admin:
       employees: Empleados
+      attendances: Asistencias
       sign_out: Salir

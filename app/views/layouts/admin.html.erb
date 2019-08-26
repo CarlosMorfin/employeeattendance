@@ -13,6 +13,11 @@
           <%= link_to(t('.employees'), admin_employees_path, class: 'nav-link') %>
         </li>
       <% end %>
+      <% if can?(:index, :admin_attendances) %>
+        <li class="nav-item <%= 'active' if active_main_navbar == :attendances %>">
+          <%= link_to(t('.attendances'), admin_attendances_path, class: 'nav-link') %>
+        </li>
+      <% end %>
     </ul>
 
     <ul class="navbar-nav ml-auto">
