@@ -51,6 +51,10 @@ module Admin
 
     private
 
+    def active_main_navbar
+      :employees
+    end
+
     def employee_params
       params.require(:employee)
         .permit(
