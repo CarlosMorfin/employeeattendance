@@ -1,0 +1,10 @@
+es-MX:
+  activerecord:
+    models:
+      attendance:
+        one: Asistencia
+        other: Asistencias
+    attributes:
+      attendance:
+        check_in: Entrada
+        check_out: Salida
