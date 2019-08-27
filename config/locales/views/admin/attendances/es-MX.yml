@@ -5,6 +5,10 @@ es-MX:
         title: Asistencias
         employees: Empleados
         check_in: Llegada
+        check_out: Salida
+        confirmation: ¿Está seguro de la salida del empleado?
       create:
         success: La llegada del empleado se ha registrado exitosamente
         error: No se pudo registrar la llegada del empleado
+      update:
+        success: La salida del empleado se ha registrado exitosamente

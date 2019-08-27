@@ -72,4 +72,117 @@ describe Admin::AttendancesController do
 
   end
 
+  describe 'POST #create', method: :post, action: :create do
+
+    before(:each) do
+      @employee = FactoryBot.create(:employee)
+    end
+
+    let(:default_params) do
+      {
+        attendance: {
+          employee_id: @employee.id,
+        }
+      }
+    end
+
+    context 'with valid attributes' do
+
+      it 'creates a new attendance' do
+        expect { do_request }.to change(Attendance, :count).by(1)
+      end
+
+      it 'assign the employee_id' do
+        do_request
+
+        employee_attendance = Attendance.last
+
+        expect(employee_attendance.employee_id).to eq default_params[:attendance][:employee_id]
+      end
+
+      it 'assign the check_in to the attendance' do
+        do_request
+
+        employee_attendance = Attendance.last
+
+        expect(employee_attendance.check_in).not_to eq be_nil
+      end
+
+
+      it 'redirects to index page' do
+        do_request
+
+        expect(response).to redirect_to admin_attendances_path
+      end
+
+    end
+
+    context 'without valid attributes' do
+
+      before(:each) do
+        default_params[:attendance][:employee_id] = nil
+      end
+
+      it 'does not create a new attendance' do
+        expect { do_request }.not_to change(Attendance, :count)
+      end
+
+      it 'assigns a flash alert message' do
+        do_request
+
+        expect(flash[:alert]).not_to be_nil
+      end
+
+      it 'renders the :index template' do
+        do_request
+
+        expect(response).to redirect_to admin_attendances_path
+      end
+
+    end
+
+  end
+
+  describe 'PATCH #update', method: :patch, action: :update do
+
+    before(:each) do
+      @employee_attendance = FactoryBot.create(:attendance)
+    end
+
+    context 'with valid attributes' do
+
+      let(:default_params) do
+        { id: @employee_attendance.id }
+      end
+
+      it 'assigns the checkout to the attendance' do
+        do_request
+
+        @employee_attendance.reload
+
+        expect(@employee_attendance.check_out).not_to be_nil
+      end
+
+      it 'redirects to index page' do
+        do_request
+
+        expect(response).to redirect_to admin_attendances_path
+      end
+
+    end
+
+    context 'when attendance does not exists' do
+
+      let(:default_params) do
+        { id: 999 }
+      end
+
+      it 'raises an ActiveRecord::RecordNotFound error' do
+        expect { do_request }.to raise_error ActiveRecord::RecordNotFound
+      end
+
+    end
+
+  end
+
 end

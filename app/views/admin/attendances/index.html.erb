@@ -20,16 +20,17 @@
         <th>
           #
         </th>
-        <th>
+        <th style='width: 15%'>
           <%= hp_human_name_for(:employee, :code) %>
         </th>
-        <th>
+        <th style='width: 40%'>
           <%= hp_human_name_for(:employee, :full_name) %>
         </th>
-        <th>
+        <th style='width: 25%'>
           <%= hp_human_name_for(:attendance, :check_in) %>
         </th>
-        <th>
+        <th style='width: 15%'>
+          <%= hp_human_name_for(:attendance, :check_out) %>
         </th>
       </tr>
     </thead>
@@ -52,6 +53,13 @@
             <%= hp_field_content(attendance.check_in, format: '%R hrs') %>
           </td>
           <td>
+            <%= form_tag(
+                admin_attendance_path(attendance),
+                method: :patch) do %>
+              <%= submit_tag(t('.check_out'),
+                  data: { confirm: t('.confirmation') },
+                  class: 'btn btn-primary btn-block') %>
+            <% end %>
           </td>
         </tr>
       <% end %>

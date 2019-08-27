@@ -21,6 +21,19 @@ module Admin
       redirect_to admin_attendances_path
     end
 
+    def update
+      employee_attendance = Attendance.find(params[:id])
+      employee_attendance.check_out = Time.zone.now
+
+      if employee_attendance.save
+        flash[:notice] = t('.success')
+      else
+        flass[:alert] = t('.error')
+      end
+
+      redirect_to admin_attendances_path
+    end
+
     private
 
     def active_main_navbar
