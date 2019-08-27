@@ -54,7 +54,7 @@ module ApplicationHelper
     css_class = "btn btn-danger #{options[:class]}"
     confirm   = options[:confirm] || t('confirmation', scope: scope)
 
-    form_tag url, method: :delete, class: 'display-inline' do
+    form_tag url, method: :delete, class: 'd-inline' do
       submit_tag(t('title', scope: scope),
         data:   { confirm: confirm },
         class:  css_class
