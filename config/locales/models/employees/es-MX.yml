@@ -16,3 +16,4 @@ es-MX:
         code_value:
           M: Masculino
           F: Femenino
+        user: Usuario

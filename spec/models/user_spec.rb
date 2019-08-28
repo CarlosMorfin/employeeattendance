@@ -14,6 +14,12 @@ describe User do
     expect(user).not_to be_valid
   end
 
+  it 'is not valid without roles' do
+    user.roles = []
+
+    expect(user).not_to be_valid
+  end
+
   it 'is not valid if the email already exists' do
     FactoryBot.create(:user, email: user.email)
 
