@@ -2,6 +2,8 @@ class Employee < ApplicationRecord
 
   GENDER_OPTIONS = %w(M F)
 
+  has_one :user
+
   validates :code,
     presence:   true,
     uniqueness: true,
