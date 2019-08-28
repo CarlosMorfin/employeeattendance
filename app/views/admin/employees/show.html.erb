@@ -43,4 +43,6 @@
   <%= link_to t('.edit'), { action: :edit }, class: 'btn btn-light pr-4 pl-4' %>
 <% end %>
 
-<%= hp_delete_button(admin_employee_path(@employee)) %>
+<% if can?(:destroy, :admin_employees)%>
+  <%= hp_delete_button(admin_employee_path(@employee)) %>
+<% end %>

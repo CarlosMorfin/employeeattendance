@@ -46,6 +46,14 @@ class Ability
     can :manage,                 :admin_employees
     can :manage,                 :admin_attendances
     can [:show, :edit, :update], :admin_employees_users
+    can :index,                  :admin_employees_attendances
+  end
+
+  def employee
+    can :show, :admin_root
+    can :read, :admin_employees_attendances
+    can :read, :admin_employees_users
+    can :show, :admin_employees
   end
 
 end

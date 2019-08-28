@@ -9,6 +9,14 @@
       <% end %>
     </li>
   <% end %>
+  <% if can?(:index, :admin_employees_attendances) %>
+    <li class="nav-item">
+      <%= link_to admin_employee_attendances_path(@employee),
+          class: "nav-link #{'active' if active_nav_tab == :attendances }" do %>
+        <%= t('.asistencias') %>
+      <% end %>
+    </li>
+  <% end %>
   <% if can?(:show, :admin_employees_users) %>
     <li class="nav-item">
       <%= link_to admin_employee_user_path(@employee),
