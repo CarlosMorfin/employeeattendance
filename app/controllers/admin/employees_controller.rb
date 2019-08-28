@@ -55,6 +55,10 @@ module Admin
       :employees
     end
 
+    def active_nav_tab
+      :personal
+    end
+
     def employee_params
       params.require(:employee)
         .permit(

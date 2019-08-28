@@ -1,0 +1,18 @@
+<%= render 'admin/employees/nav_tabs' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="details-group">
+        <%= hp_field_label(:employee, :user) %>
+        <%= hp_human_code_name_for(:user, @employee.user&.email) %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="details-group">
+        <%= hp_field_label(:user, :roles) %>
+        <%= hp_human_code_name_for(:user, @employee.user&.roles) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<% content_for :title, t('.title', full_name: @employee.full_name) %>
+
+<ul class="nav nav-tabs mb-3">
+  <% if can?(:show, :admin_employees) %>
+    <li class="nav-item">
+      <%= link_to admin_employee_path(@employee),
+          class: "nav-link #{'active' if active_nav_tab == :personal }" do %>
+        <%= t('.personal_information') %>
+      <% end %>
+    </li>
+  <% end %>
+  <% if can?(:show, :admin_employees_users) %>
+    <li class="nav-item">
+      <%= link_to admin_employee_user_path(@employee),
+          class: "nav-link #{'active' if active_nav_tab == :user }" do %>
+        <%= t('.user') %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

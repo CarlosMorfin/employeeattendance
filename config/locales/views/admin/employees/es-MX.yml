@@ -12,10 +12,13 @@ es-MX:
       edit:
         title: ! '%{full_name}'
       show:
-        title: ! '%{full_name}'
         edit: Editar
       update:
         success: Los datos del empleado han sido actualizados
         error: No se pudo actualizar al empleado
       destroy:
         success: El empleado ha sido borrado exitosamente
+      nav_tabs:
+        title: ! '%{full_name}'
+        personal_information: Información personal
+        user: Usuario

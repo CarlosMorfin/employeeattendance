@@ -1,0 +1,6 @@
+es-MX:
+  admin:
+    employees:
+      users:
+        show:
+          title: ! '%{full_name}'
