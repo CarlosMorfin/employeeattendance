@@ -1,0 +1,12 @@
+es-MX:
+  activerecord:
+    models:
+      role:
+        one: Role
+        other: Roles
+    attributes:
+      role:
+        code: Código
+        code_value:
+          administrator: Administrador
+          employee: Empleado

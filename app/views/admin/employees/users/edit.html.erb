@@ -1,0 +1,52 @@
+<%= render 'admin/employees/nav_tabs' %>
+
+<div class="container">
+  <%= form_for @employee, url: admin_employee_user_path(@employee) do |form| %>
+    <%= form.fields_for :user do |user_form| %>
+      <%= hidden_field_tag('employee[user_attributes][employee_id]',"#{@employee.id }") %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= user_form.label(:email) %>
+            <%= user_form.email_field(:email, class: 'form-control') %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= user_form.label(:roles) %>
+            <% @roles.each_with_index do |role, index| %>
+              <div class="form-check">
+                <%= check_box_tag('employee[user_attributes][role_ids][]',
+                    role.id,
+                    @user.role_ids.include?(role.id),
+                    class: 'form-check-input',
+                    id:    "user_role_#{index}") %>
+                <label class="form-check-label" for="user_role_<%= index %>">
+                  <%= hp_human_code_name_for(:role, role.code) %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= user_form.label(:password) %>
+          <%= user_form.password_field(:password, class: 'form-control') %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= user_form.label(:password_confirmation) %>
+          <%= user_form.password_field(:password_confirmation, class: 'form-control') %>
+        </div>
+      </div>
+    <% end %>
+
+    <hr>
+    <%= form.submit t('.accept'),
+        class: 'btn btn-primary',
+        data:  { confirm: t('.confirmation') } %>
+  <% end %>
+</div>

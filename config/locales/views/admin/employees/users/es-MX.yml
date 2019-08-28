@@ -4,3 +4,10 @@ es-MX:
       users:
         show:
           title: ! '%{full_name}'
+          edit: Editar
+        edit:
+          accept: Aceptar
+        update:
+          success: El usuario a sido guardado exitosamente
+          error: No se pudo guardar el usuario
+

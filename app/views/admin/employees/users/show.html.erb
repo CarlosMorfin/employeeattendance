@@ -5,14 +5,27 @@
     <div class="col-md-6">
       <div class="details-group">
         <%= hp_field_label(:employee, :user) %>
-        <%= hp_human_code_name_for(:user, @employee.user&.email) %>
+        <%= hp_field_content(@employee.user&.email) %>
       </div>
     </div>
     <div class="col-md-6">
       <div class="details-group">
         <%= hp_field_label(:user, :roles) %>
-        <%= hp_human_code_name_for(:user, @employee.user&.roles) %>
+        <% if @employee.user %>
+          <% @employee.user.roles.each do |role| %>
+            <span class="ml-2">
+              <%= hp_human_code_name_for(:role, role.code) %>
+            </span>
+          <% end %>
+        <% else %>
+          ----
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<% if can?(:edit, :admin_employees_users)%>
+  <hr>
+  <%= link_to t('.edit'), { action: :edit }, class: 'btn btn-light ml-3' %>
+<% end %>

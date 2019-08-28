@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :employees do
       resource :user,
         controller: 'employees/users',
-        only: [:show]
+        only: [:show, :edit, :update]
     end
     resources :attendances,
       only: [:index, :create, :update]

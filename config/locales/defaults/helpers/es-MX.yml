@@ -3,4 +3,7 @@ es-MX:
     delete_button:
       title: Eliminar
       confirmation: ¿Está seguro?
+    field_content:
+      no_content: ! '----'
+
 

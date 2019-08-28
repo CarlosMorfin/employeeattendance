@@ -4,6 +4,12 @@ class Employee < ApplicationRecord
 
   has_one :user
 
+  accepts_nested_attributes_for :user
+
+  validates :user,
+    presence: true,
+    on: :users
+
   validates :code,
     presence:   true,
     uniqueness: true,
