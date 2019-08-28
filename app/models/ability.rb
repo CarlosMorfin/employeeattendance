@@ -45,6 +45,7 @@ class Ability
     can :show,   :admin_root
     can :manage, :admin_employees
     can :manage, :admin_attendances
+    can :show,   :admin_employees_users
   end
 
 end

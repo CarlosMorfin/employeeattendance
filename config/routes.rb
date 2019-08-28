@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'root#show'
-    resources :employees
+    resources :employees do
+      resource :user,
+        controller: 'employees/users',
+        only: [:show]
+    end
     resources :attendances,
       only: [:index, :create, :update]
   end
