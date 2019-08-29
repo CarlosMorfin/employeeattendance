@@ -66,5 +66,5 @@ ActiveRecord::Schema.define(version: 2019_08_27_044859) do
   end
 
   add_foreign_key "attendance", "employee", on_delete: :cascade
-  add_foreign_key "user", "employee"
+  add_foreign_key "user", "employee", on_delete: :cascade
 end
