@@ -30,6 +30,17 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    if user.present?  # additional permissions for logged in users (they can read their own posts)
+      can :read, Attendance, employee_id: user.employee_id
+      can :read, User,                id: user.id
+      can :read, Employee,            id: user.employee_id
+
+      if user.roles.include?(Role.find_by(code: 'administrator'))  # additional permissions for administrators
+        can :manage, Attendance
+        can :manage, User
+        can :manage, Employee
+      end
+    end
 
     user.roles.each { |role| send(role.code) }
 
@@ -46,7 +57,7 @@ class Ability
     can :manage,                 :admin_employees
     can :manage,                 :admin_attendances
     can [:show, :edit, :update], :admin_employees_users
-    can :index,                  :admin_employees_attendances
+    can [:index, :index_all],    :admin_employees_attendances
   end
 
   def employee

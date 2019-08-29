@@ -51,7 +51,7 @@ module Admin::Employees
     end
 
     def find_employee
-      @employee = Employee.find(params[:employee_id])
+      @employee = Employee.accessible_by(current_ability).find(params[:employee_id])
     end
 
     def find_user

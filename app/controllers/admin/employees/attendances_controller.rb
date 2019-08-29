@@ -3,9 +3,17 @@ module Admin::Employees
   class AttendancesController < AdminController
 
     def index
-      @employee = Employee.find(params[:employee_id])
+      @employee = Employee
+        .accessible_by(current_ability)
+        .find_by(id: params[:employee_id])
 
-      @attendances = Attendance.where(employee_id: params[:employee_id])
+
+      @attendances = Attendance
+        .accessible_by(current_ability)
+        .where(employee_id: params[:employee_id])
+        .order(check_in: :desc)
+
+      authorize! :read, @employee
     end
 
     private

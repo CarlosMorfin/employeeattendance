@@ -72,7 +72,7 @@ module Admin
     end
 
     def find_employee
-      @employee = Employee.find(params[:id])
+      @employee = Employee.accessible_by(current_ability).find(params[:id])
     end
 
     def recommended_code

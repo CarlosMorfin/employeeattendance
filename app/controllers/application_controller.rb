@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   helper_method :active_main_navbar
   helper_method :active_nav_tab
 
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
+  end
+
   private
 
   def active_main_navbar ; end
