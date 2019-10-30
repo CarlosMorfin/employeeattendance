@@ -10,7 +10,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Flexible authentication solution for Rails with Warden
-gem 'devise', '~> 4.6', '>= 4.6.2'
+gem 'devise', '~> 4.7'
 # Authorization library for Ruby on Rails
 gem 'cancancan', '~> 3.0', '>= 3.0.1'
 # Use SCSS for stylesheets
